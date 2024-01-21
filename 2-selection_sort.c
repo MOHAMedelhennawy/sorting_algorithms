@@ -6,26 +6,27 @@
 */
 void selection_sort(int *array, size_t size)
 {
-	int min;
-	int idx = 0;
-	size_t i, j;
+	size_t i, j, min;
 
 	if (!array || size < 2)
 		return;
 
 	for (i = 0; i < size - 1; i++)
 	{
-		min = array[i];
+		min = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < min)
+			if (array[j] < array[min])
 			{
-				min = array[j];
-				idx = j;
+				min = j;
 			}
 		}
-		swap(&array[i], &array[idx]);
-		print_array(array, size);
+
+		if (min != i)
+		{
+			swap(&array[i], &array[min]);
+			print_array(array, size);
+		}
 	}
 }
 
