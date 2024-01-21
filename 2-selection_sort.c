@@ -6,7 +6,7 @@
 */
 void selection_sort(int *array, size_t size)
 {
-	int min, temp;
+	int min;
 	int idx = 0;
 	size_t i, j;
 
@@ -24,9 +24,21 @@ void selection_sort(int *array, size_t size)
 				idx = j;
 			}
 		}
-		temp = array[i];
-		array[i] = min;
-		array[idx] = temp;
+		swap(&array[i], &array[idx]);
 		print_array(array, size);
 	}
+}
+
+/**
+ * swap - funtion to swap two numbers.
+ * @num1: The first number.
+ * @num2: The second number.
+*/
+void swap(int *num1, int *num2)
+{
+	int temp;
+
+	temp = *num1;
+	*num1 = *num2;
+	*num2 = temp;
 }
