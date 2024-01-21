@@ -1,4 +1,5 @@
 #include "sort.h"
+
 /**
  * bubble_sort - Sroting function.
  * @array: The origan array.
@@ -6,7 +7,6 @@
 */
 void bubble_sort(int *array, size_t size)
 {
-	int temp;
 	size_t i, j;
 
 	for (i = 0; i < size; i++)
@@ -15,12 +15,24 @@ void bubble_sort(int *array, size_t size)
 		{
 			if (array[j] > array[j + 1])
 			{
-				temp = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = temp;
+				swap(&array[j], &array[j + 1]);
 				print_array(array, size);
 			}
 		}
 
 	}
+}
+
+/**
+ * swap - funtion to swap two numbers.
+ * @num1: The first number.
+ * @num2: The second number.
+*/
+void swap(int *num1, int *num2)
+{
+	int temp;
+
+	temp = *num1;
+	*num1 = *num2;
+	*num2 = temp;
 }
