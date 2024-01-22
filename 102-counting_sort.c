@@ -30,7 +30,7 @@ void counting_sort(int *array, size_t size)
 	for (i = 1; i <= max + 1; i++)
 		count_arr[i] += count_arr[i - 1];
 
-	sorted_array = (int *) malloc(sizeof(int) * size);
+	sorted_array = (int *) malloc(sizeof(int *) * size);
 	if (!sorted_array)
 		return;
 
