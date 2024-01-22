@@ -6,9 +6,10 @@
 */
 void quick_sort(int *array, size_t size)
 {
-	int start = 0;
 
-	qs(array, start, size - 1, size);
+	if (!array || size < 2)
+		return;
+	qs(array, 0, size - 1, size);
 }
 /**
  * qs - The function to sort array recursively.
