@@ -1,50 +1,73 @@
 #include "sort.h"
-
+/**
+ * quick_sort - Sorting algorithm.
+ * @array: Origin array.
+ * @size: Size of array.
+*/
 void quick_sort(int *array, size_t size)
 {
-    if (array == NULL || size < 2)
-        return;
+	int start = 0;
 
-    qs(array, 0, size - 1, size);
+	qs(array, start, size - 1, size);
 }
-
-void qs(int *arr, int low, int high, size_t size)
+/**
+ * qs - The function to sort array recursively.
+ * @array: Origin array.
+ * @start: The point that starts from.
+ * @end: The point that will finish in.
+ * @size: Size of array.
+*/
+void qs(int *array, int start, int end, int size)
 {
-    int pi;
+	int part_index;
 
-    if (low < high)
-    {
-        pi = partition(low, high, arr, size);
+	if (start < end)
+	{
 
-        qs(arr, low, pi - 1, size);
-        qs(arr, pi + 1, high, size);
-    }
+		part_index = partition(array, start, end, size);
+
+		qs(array, start, part_index - 1, size);
+		qs(array, part_index + 1, end, size);
+	}
 }
-
-int partition(int low, int high, int *array, size_t size)
+/**
+ * partition - The function that sort array.
+ * @array: origin array.
+ * @start: The point that starts from.
+ * @end: The point that will finish in.
+ * @size: Size of array.
+ * Return: Partition index "part_index".
+*/
+int partition(int *array, int start, int end, int size)
 {
-    int pivot = array[high];
-    int i = low - 1;
-    int j;
+	int pivot = array[end], i;
+	int part_index = start;
 
-    for (j = low; j <= high - 1; j++)
-    {
-        if (array[j] < pivot)
-        {
-            i++;
-            swap(&array[i], &array[j]);
-        }
-    }
-    swap(&array[i + 1], &array[high]);
-    print_array(array, size);
-    return (i + 1);
+	for (i = start; i < end; i++)
+	{
+		if (array[i] <= pivot)
+		{
+			swap(&array[i], &array[part_index]);
+			part_index++;
+		}
+	}
+
+	swap(&array[part_index], &array[end]);
+	print_array(array, size);
+	return (part_index);
 }
 
+
+/**
+ * swap - function to swap two numbers.
+ * @num1: The first number.
+ * @num2: The second number.
+*/
 void swap(int *num1, int *num2)
 {
-    int temp;
+	int temp;
 
-    temp = *num1;
-    *num1 = *num2;
-    *num2 = temp;
+	temp = *num1;
+	*num1 = *num2;
+	*num2 = temp;
 }
