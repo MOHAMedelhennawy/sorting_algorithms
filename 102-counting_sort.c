@@ -8,29 +8,26 @@
 void counting_sort(int *array, size_t size)
 {
 	size_t max = array[0], i;
-	int *count_arr;
-	int *sorted_array;
+	int *count_arr, *sorted_array;
 
 	if (!array || size < 2)
 		return;
 
 	for (i = 1; i < size; i++)
-	{
 		if (array[i] > (int)max)
 			max = array[i];
-	}
 
 	count_arr = (int *)malloc(sizeof(int) * max + 1);
 	if (!count_arr)
 		return;
 
-	for (i = 0; i < max; i++)
+	for (i = 0; i < max + 1; i++)
 		count_arr[i] = 0;
 
 	for (i = 0; i < size; i++)
 		count_arr[array[i]]++;
 
-	for (i = 1; i <= max; i++)
+	for (i = 1; i <= max + 1; i++)
 		count_arr[i] += count_arr[i - 1];
 
 	sorted_array = (int *) malloc(sizeof(int) * size);
