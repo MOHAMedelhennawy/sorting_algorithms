@@ -27,4 +27,6 @@ listint_t *swap_node(listint_t *node, listint_t **list);
 void insertion_sort_list(listint_t **list);
 void shell_sort(int *array, size_t size);
 void counting_sort(int *array, size_t size);
+void merge(int* R_array, int* L_array, int* array, int R_len, int L_len);
+void merge_sort(int *array, size_t size);
 #endif
