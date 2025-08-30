@@ -20,7 +20,7 @@ void print_list(const listint_t *list);
 void bubble_sort(int *array, size_t size);
 void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
-void swap(int *num1, int *num2);
+int swap(int *num1, int *num2);
 int partition(int *array, int start, int end, int size);
 void qs(int *array, int start, int end, int size);
 listint_t *swap_node(listint_t *node, listint_t **list);
